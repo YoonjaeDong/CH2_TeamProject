@@ -1,22 +1,24 @@
 ﻿#pragma once
 #include <iostream>
-#include <string> 
+#include <string>
 
 using namespace std;
 
-class ACharacter
+class APlayer
 {
 public:
-    ACharacter(string Name, int Hp, int Atk);
-    ~ACharacter();
-   
+    APlayer();
+    ~APlayer();
+
 protected:
-   
+  
     string Name;
 
     int Hp;
 
     int Atk;
+
+public:
 
     void Attack();
 

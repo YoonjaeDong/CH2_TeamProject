@@ -1,30 +1,28 @@
-﻿// 파일명: Character.cpp
-#include "Character.h"
+﻿#include "Player.h"
 
-
-ACharacter::ACharacter(string NewName, int NewHp, int NewAtk)
+APlayer::APlayer()
 {
-    Name = NewName;
+    /*Name = NewName;
     Hp = NewHp;
-    Atk = NewAtk;
+    Atk = NewAtk;*/
 
     cout << "[생성]" << Name << "가 전장에 나타났습니다! (HP : " << Hp << ")" << endl;
 }
 
-ACharacter::~ACharacter()
+APlayer::~APlayer()
 {
-    cout << "ACharacter 소멸됨" << endl;
+    cout << "APlayer 소멸됨" << endl;
 }
 
-void ACharacter::Attack()
+
+
+void APlayer::Attack()
 {
     cout << Name << "가 공격합니다! (공격력 : " << Atk << ")" << endl;
-
 }
 
-void ACharacter::TakeDamage(int DamageAmount)
+void APlayer::TakeDamage(int DamageAmount)
 {
-
     Hp = Hp - DamageAmount;
 
     cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << endl;

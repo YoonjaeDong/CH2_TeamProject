@@ -1,18 +1,18 @@
-// ∆ƒ¿œ∏Ì: Main.cpp
+Ôªø// ÌååÏùºÎ™Ö: Main.cpp
 #include "Character.h"
 
 int main()
 {
-    // 1. ƒ≥∏Ø≈Õ ª˝º∫
-    ACharacter* MyChar = new ACharacter();
+    // 1. Ï∫êÎ¶≠ÌÑ∞ ÏÉùÏÑ±
+    ACharacter* MyChar = new ACharacter("Unknown", 100, 10);
 
-    // 2. ∞¯∞› ≈◊Ω∫∆Æ
+    // 2. Í≥µÍ≤© ÌÖåÏä§Ìä∏
     MyChar->Attack();
 
-    // 3. ««∞› ≈◊Ω∫∆Æ (µ•πÃ¡ˆ 30¿ª ¡‡∫æΩ√¥Ÿ)
+    // 3. ÌîºÍ≤© ÌÖåÏä§Ìä∏ (Îç∞ÎØ∏ÏßÄ 30ÏùÑ Ï§òÎ¥ÖÏãúÎã§)
     MyChar->TakeDamage(30);
 
-    // 4. ªË¡¶
+    // 4. ÏÇ≠Ï†ú
     delete MyChar;
 
     return 0;
