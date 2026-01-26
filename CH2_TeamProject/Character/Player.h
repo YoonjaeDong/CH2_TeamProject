@@ -9,20 +9,4 @@ class APlayer: public ACharacter
 {
 public:
     APlayer(string Name, int Hp, int Atk);
-    ~APlayer();
-
-protected:
-  
-    string Name;
-
-    int Hp;
-
-    int Atk;
-
-public:
-
-    void Attack();
-
-    void TakeDamage(int DamageAmount);
-
 };

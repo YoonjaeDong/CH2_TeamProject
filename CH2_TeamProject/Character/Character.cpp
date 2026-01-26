@@ -1,7 +1,7 @@
 ﻿#include "Character.h"
 
 
-ACharacter::ACharacter(string NewName, int NewHp, int NewAtk)
+ACharacter::ACharacter(const string& NewName, int NewHp, int NewAtk)
 {
     Name = NewName;
     Hp = NewHp;
@@ -17,8 +17,8 @@ ACharacter::~ACharacter()
 
 void ACharacter::Attack(ACharacter* target)
 {
+    target->TakeDamage(Atk);
     cout << Name << "가 공격합니다! (공격력 : " << Atk << ")" << endl;
-
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
