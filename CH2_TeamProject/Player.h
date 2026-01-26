@@ -1,13 +1,14 @@
 ﻿#pragma once
+#include "Character.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-class APlayer
+class APlayer: public ACharacter
 {
 public:
-    APlayer();
+    APlayer(string Name, int Hp, int Atk);
     ~APlayer();
 
 protected:

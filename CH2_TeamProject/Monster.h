@@ -6,8 +6,6 @@
 
 using namespace std;
 
-// [Mission 1] 클래스 선언
-// 언리얼 표준: 클래스 이름은 'A'로 시작합니다.
 class AMonster : public ACharacter
 {
 public:
@@ -15,17 +13,11 @@ public:
     ~AMonster();
 
 protected:
-
     string Name;
-
     int Hp;
-
     int Atk;
 
 public:
-
     void Attack();
-
     void TakeDamage(int DamageAmount);
-
 };

@@ -1,5 +1,4 @@
-﻿// 파일명: Character.cpp
-#include "Character.h"
+﻿#include "Character.h"
 
 
 ACharacter::ACharacter(string NewName, int NewHp, int NewAtk)
@@ -16,7 +15,7 @@ ACharacter::~ACharacter()
     cout << "ACharacter 소멸됨" << endl;
 }
 
-void ACharacter::Attack()
+void ACharacter::Attack(ACharacter* target)
 {
     cout << Name << "가 공격합니다! (공격력 : " << Atk << ")" << endl;
 
@@ -24,7 +23,6 @@ void ACharacter::Attack()
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
-
     Hp = Hp - DamageAmount;
 
     cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << endl;
