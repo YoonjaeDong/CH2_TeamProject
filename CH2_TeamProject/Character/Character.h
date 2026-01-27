@@ -5,26 +5,31 @@
 
 using namespace std;
 
+struct FUnitStat
+{
+	int Hp;
+	int Atk;
+	int Def;
+	int Critical;
+};
+
 class ACharacter
 {
 public:
-	ACharacter(const string& Name, int Hp, int Atk, int NewDef, float NewCri);
+	ACharacter(const string& Name, const FUnitStat& NewStat);
 	//가상 소멸자-
 	virtual ~ACharacter();
 
 protected:
 	string Name;
-	int Hp;
-	int Atk;
-	int Def;
-	int Critical;
+	FUnitStat Stat;
 
 public:
 	void Attack(ACharacter* target);
 	void TakeDamage(int DamageAmount);
 
-	int GetHp() { return Hp; }
-	bool IsDead() { return Hp <= 0; }
+	int GetHp() { return Stat.Hp; }
+	bool IsDead() { return Stat.Hp <= 0; }
 	int getRandomInt()
 	{
 		static random_device rd;

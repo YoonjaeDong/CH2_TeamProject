@@ -1,15 +1,13 @@
 ﻿#include "Character.h"
 
 
-ACharacter::ACharacter(const string& NewName, int NewHp, int NewAtk, int NewDef, float NewCri)
+ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
 {
     Name = NewName;
-    Hp = NewHp;
-    Atk = NewAtk;
-    Def = NewDef;
-    Critical = NewCri;
 
-    cout << "[생성]" << Name << "가 전장에 나타났습니다! (HP : " << Hp << ")" << endl;
+    Stat = NewStat;
+
+    cout << "[생성]" << Name << "가 전장에 나타났습니다! (HP : " << Stat.Hp << ")" << endl;
 }
 
 ACharacter::~ACharacter()
@@ -19,10 +17,10 @@ ACharacter::~ACharacter()
 
 void ACharacter::Attack(ACharacter* target)
 {
-    int damage = Atk;
+    int damage = Stat.Atk;
     int random = getRandomInt();
     
-    if (random < Critical)
+    if (random < Stat.Critical)
     {
         damage = damage * 1.5f;
         cout << "크리티컬 공격!!" << endl;
@@ -35,13 +33,13 @@ void ACharacter::Attack(ACharacter* target)
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
-    int NewDamage = DamageAmount - Def;
+    int NewDamage = DamageAmount - Stat.Def;
 
     if (NewDamage < 0)
         NewDamage = 0;
 
-    Hp = Hp - NewDamage;
+    Stat.Hp = Stat.Hp - NewDamage;
 
     cout << Name << "가 " << NewDamage << "의 피해를 입었습니다." << endl;
-    cout << "   ->" << Name << "의 남은 체력 : " << Hp << endl;
+    cout << "   ->" << Name << "의 남은 체력 : " << Stat.Hp << endl;
 }
