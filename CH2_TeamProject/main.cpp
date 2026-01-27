@@ -4,8 +4,8 @@
 
 int main()
 {
-    ACharacter* Player = new ACharacter("Unknown", 200, 30);
-    ACharacter* Monster = new ACharacter("트롤", 200, 20);
+    ACharacter* Player = new ACharacter("Unknown", 200, 30, 10, 30);
+    ACharacter* Monster = new ACharacter("트롤", 100, 20, 5, 10);
 
     cout << "=== 데스매치 시작! === " << endl;
 
@@ -22,11 +22,6 @@ int main()
         }
 
         Sleep(500);
-
-        // [몬스터 턴]
-       // 1. 몬스터가 플레이어를 공격,  2. 플레이어가 데미지를 입음
-
-       // 3. 플레이어가 죽었는지 확인
 
         Monster->Attack(Player);
 

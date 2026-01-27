@@ -8,5 +8,5 @@ using namespace std;
 class APlayer: public ACharacter
 {
 public:
-    APlayer(string Name, int Hp, int Atk);
+    APlayer(string Name, int Hp, int Atk, int Def, float Cri);
 };
