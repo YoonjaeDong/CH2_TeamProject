@@ -5,3 +5,12 @@ APlayer::APlayer(const string& NewName, const FUnitStat& NewStat)
 {
     
 }
+
+void APlayer::UseItem()
+{
+
+}
+void APlayer::LevelUp()
+{
+
+}
