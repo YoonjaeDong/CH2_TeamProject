@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Character.h"
-#include <iostream>
 #include <string>
 
 using namespace std;
@@ -8,5 +7,9 @@ using namespace std;
 class APlayer: public ACharacter
 {
 public:
-    APlayer(string Name, FUnitStat);
+    APlayer(const string& Name, const FUnitStat& Stat);
+    
+    //멤버 변수: Level, Exp
+    
+    //멤버 함수: UseItem(), LevelUp() // 구현은 CPP에는 작성하되, 빈 구현으로 만들어주세요.
 };

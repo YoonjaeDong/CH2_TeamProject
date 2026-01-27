@@ -1,7 +1,7 @@
 ﻿#include "Player.h"
 
-APlayer::APlayer(string NewName, FUnitStat)
-    : ACharacter(NewName, Stat)
+APlayer::APlayer(const string& NewName, const FUnitStat& NewStat)
+    : ACharacter(NewName, NewStat)
 {
-
+    
 }

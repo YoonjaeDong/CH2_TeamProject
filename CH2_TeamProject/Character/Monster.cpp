@@ -1,7 +1,7 @@
 ﻿#include "Monster.h"
 
 
-AMonster::AMonster(string NewName,FUnitStat)
-    : ACharacter(NewName, Stat)
+AMonster::AMonster(const string& NewName, const FUnitStat& NewStat)
+    : ACharacter(NewName, NewStat)
 {
 }

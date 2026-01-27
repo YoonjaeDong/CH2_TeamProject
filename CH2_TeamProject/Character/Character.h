@@ -17,7 +17,6 @@ class ACharacter
 {
 public:
 	ACharacter(const string& Name, const FUnitStat& NewStat);
-	//가상 소멸자-
 	virtual ~ACharacter();
 
 protected:
@@ -30,12 +29,5 @@ public:
 
 	int GetHp() { return Stat.Hp; }
 	bool IsDead() { return Stat.Hp <= 0; }
-	int getRandomInt()
-	{
-		static random_device rd;
-		static mt19937 gen(rd());
-		uniform_int_distribution<int> dis(0, 100);
-
-		return dis(gen);
-	}
+	int GetRandomInt();
 };

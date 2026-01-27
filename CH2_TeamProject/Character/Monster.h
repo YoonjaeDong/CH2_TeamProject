@@ -9,5 +9,5 @@ using namespace std;
 class AMonster : public ACharacter
 {
 public:
-    AMonster(string NewName, FUnitStat);
+    AMonster(const string& NewName, const FUnitStat& NewStat);
 };
