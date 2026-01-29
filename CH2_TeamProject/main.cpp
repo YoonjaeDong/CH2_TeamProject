@@ -1,4 +1,6 @@
 ﻿#include "Character/Character.h"
+#include "Character/Player.h"
+#include "Character/Monster.h"
 
 #include <Windows.h>
 
@@ -6,8 +8,9 @@ int main()
 {
     FUnitStat PlayerStat{ 200, 30, 10, 30 };
     FUnitStat MonsterStat{ 100, 20, 5, 10 };
-    ACharacter* Player = new ACharacter("용사", PlayerStat);
-    ACharacter* Monster = new ACharacter("트롤", MonsterStat);
+
+    ACharacter* Player = new APlayer("용사", PlayerStat);
+    ACharacter* Monster = new AMonster("트롤", MonsterStat);
 
     cout << "=== 데스매치 시작! === " << endl;
 
