@@ -25,10 +25,6 @@ FDamageResult ACharacter::Attack(ACharacter* target)
 		Damage = static_cast<int>(Damage * 1.5f);
 	}
 
-	if (bCritical)
-	{
-		cout << "크리티컬 공격!!" << endl;
-	}
 	int FinalDamage = target->TakeDamage(Damage);
 	FDamageResult result;
 	result.Damage = FinalDamage;
