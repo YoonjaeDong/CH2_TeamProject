@@ -14,7 +14,7 @@ ACharacter::~ACharacter()
 	cout << "ACharacter 소멸됨" << endl;
 }
 
-void ACharacter::Attack(ACharacter* target)
+FDamageResult ACharacter::Attack(ACharacter* target)
 {
 	int Damage = Stat.Atk;
 	int Random = GetRandomInt();
@@ -29,19 +29,22 @@ void ACharacter::Attack(ACharacter* target)
 	{
 		cout << "크리티컬 공격!!" << endl;
 	}
-
-	target->TakeDamage(Damage);
+	int FinalDamage = target->TakeDamage(Damage);
+	FDamageResult result;
+	result.Damage = FinalDamage;
+	result.bCritical = bCritical;
+	return result;
 }
 
-void ACharacter::TakeDamage(int DamageAmount)
+int ACharacter::TakeDamage(int DamageAmount)
 {
 	int NewDamage = DamageAmount - Stat.Def;
 	NewDamage = max(NewDamage, 0);
 
 	Stat.Hp = Stat.Hp - NewDamage;
+	Stat.Hp = max(Stat.Hp, 0);
 
-	cout << Name << "가 " << NewDamage << "의 피해를 입었습니다." << endl;
-	cout << "   ->" << Name << "의 남은 체력 : " << Stat.Hp << endl;
+	return NewDamage;
 }
 
 int ACharacter::GetRandomInt()
