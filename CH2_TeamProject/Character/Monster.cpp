@@ -10,5 +10,5 @@ void AMonster::Attack(ACharacter* Target)
 {
     cout << "크아앙!" << Name << "이(가) 공격합니다!" << endl;
 
-    Target->TakeDamage(Stat.Atk);
+    ACharacter::Attack(Target);
 }

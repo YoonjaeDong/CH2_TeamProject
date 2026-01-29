@@ -12,4 +12,5 @@ public:
     AMonster(const string& NewName, const FUnitStat& NewStat);
 
     void Attack(ACharacter* Target) override;
+
 };

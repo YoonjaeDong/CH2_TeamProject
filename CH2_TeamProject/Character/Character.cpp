@@ -25,7 +25,6 @@ void ACharacter::Attack(ACharacter* target)
 		Damage = static_cast<int>(Damage * 1.5f);
 	}
 
-	cout << Name << "가 공격합니다! (데미지 : " << Damage << ")" << endl;
 	if (bCritical)
 	{
 		cout << "크리티컬 공격!!" << endl;
