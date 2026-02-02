@@ -15,9 +15,22 @@ FDamageResult APlayer::Attack(ACharacter* Target)
     {
         AttackMessage = "검으로 급소를 베었습니다!!";
     }
-    cout << Name << AttackMessage << "데미지 : " << result.Damage << endl;
-    cout << Target->GetName() << "HP : " << Target->GetHp() << endl;
+   
+    result.PrintMessage(AttackMessage);
     return result;
+}
+
+void APlayer::UseSkill(ACharacter* Target)
+{
+    FDamageResult result;
+    result.Attacker = this;
+    result.Target = Target;
+    result.bCritical = false;
+
+    int FinalDamage = Target->TakeDamage(Stat.Atk * 2);
+    result.Damage = FinalDamage;
+
+    result.PrintMessage("강공격을 사용했습니다.");
 }
 
 void APlayer::UseItem()

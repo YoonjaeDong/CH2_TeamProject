@@ -6,11 +6,8 @@
 
 int main()
 {
-    FUnitStat PlayerStat{ 200, 30, 10, 30 };
-    FUnitStat MonsterStat{ 100, 20, 5, 10 };
-
-    ACharacter* Player = new APlayer("용사", PlayerStat);
-    ACharacter* Monster = new AMonster("트롤", MonsterStat);
+    ACharacter* Player = new APlayer("용사", FUnitStat(200, 50, 30, 10, 30));
+    ACharacter* Monster = new AMonster("트롤", FUnitStat(100, 30, 20, 5, 10));
 
     cout << "=== 데스매치 시작! === " << endl;
 

@@ -1,10 +1,13 @@
 ﻿#include "Character.h"
 
 
-ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
+ACharacter::ACharacter(const string& NewName, const FUnitStat& UnitStat)
 {
 	Name = NewName;
-	Stat = NewStat;
+	Stat = UnitStat;
+
+	Stat.Hp = Stat.MaxHp;
+	Stat.Mp = Stat.MaxMp;
 
 	cout << "[생성]" << Name << "가 전장에 나타났습니다! (HP : " << Stat.Hp << ")" << endl;
 }
@@ -14,7 +17,23 @@ ACharacter::~ACharacter()
 	cout << "ACharacter 소멸됨" << endl;
 }
 
-FDamageResult ACharacter::Attack(ACharacter* target)
+void FDamageResult::PrintMessage(const string& AttackMessage)
+{
+	cout << "---------------------------------------------------" << endl;
+	Attacker->PrintName();
+	cout << AttackMessage << "\n";
+
+	Target->PrintName();
+	cout << "받은 데미지 : " << Damage << " -> '남은 HP' : " << Target->GetHp() << "/" << Target->GetMaxHp() << endl;
+	cout << "---------------------------------------------------" << endl;
+}
+
+void ACharacter::PrintName()
+{
+	cout << "[" << Name << "] ";
+}
+
+FDamageResult ACharacter::Attack(ACharacter* Target)
 {
 	int Damage = Stat.Atk;
 	int Random = GetRandomInt();
@@ -25,8 +44,10 @@ FDamageResult ACharacter::Attack(ACharacter* target)
 		Damage = static_cast<int>(Damage * 1.5f);
 	}
 
-	int FinalDamage = target->TakeDamage(Damage);
+	int FinalDamage = Target->TakeDamage(Damage);
 	FDamageResult result;
+	result.Attacker = this;
+	result.Target = Target;
 	result.Damage = FinalDamage;
 	result.bCritical = bCritical;
 	return result;
@@ -50,4 +71,9 @@ int ACharacter::GetRandomInt()
 	uniform_int_distribution<int> dis(0, 100);
 
 	return dis(gen);
+}
+
+void ACharacter::UseSkill(ACharacter* Target)
+{
+
 }

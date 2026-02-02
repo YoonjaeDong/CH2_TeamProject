@@ -16,5 +16,6 @@ protected:
 public:
     void UseItem();
     void LevelUp();
-    virtual FDamageResult Attack(ACharacter* Target);
+    FDamageResult Attack(ACharacter* Target) override;
+    void UseSkill(ACharacter* Target) override;
 };
