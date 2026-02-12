@@ -21,12 +21,13 @@ FDamageResult AMonster::Attack(ACharacter* Target)
 
 void AMonster::UseSkill(ACharacter* Target)
 {
+    
     if (Stat.Mp < 10)
     {
         return;
     }
     int Damage = Stat.Atk;
-
+    cout << "---------------------------------------------------" << endl;
     Stat.Mp -= 10;
     string AttackMessage = "이(가) 흡혈을 사용했습니다!";
 
@@ -37,4 +38,5 @@ void AMonster::UseSkill(ACharacter* Target)
 
     cout << Name << AttackMessage << "데미지 : " << Damage << endl;
     cout << Damage << "만큼 체력을 회복했습니다!!" << endl;
+    cout << "---------------------------------------------------" << endl;
 }

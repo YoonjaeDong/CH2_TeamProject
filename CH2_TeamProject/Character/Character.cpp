@@ -73,7 +73,28 @@ int ACharacter::GetRandomInt()
 	return dis(gen);
 }
 
-void ACharacter::UseSkill(ACharacter* Target)
+void ACharacter::DoAction(ACharacter* Target)
 {
+	const int AttackRate = 70;
+	const int SkillMp = 10;
+		
+	if (GetRandomInt() < AttackRate)
+	{
+		Attack(Target);
 
+		return;
+	}
+	if (Stat.Mp < SkillMp)
+	{
+		cout << "마나가 부족합니다." << endl;
+		Attack(Target);
+	
+		return;
+	}
+	UseSkill(Target);
+}
+
+void ACharacter::ShowStat(ACharacter* Target)
+{
+	cout << "[" << Name << "]" << "HP : " << Stat.Hp << " / " << Stat.MaxHp << "|" << "MP : " << Stat.Mp << " / " << Stat.MaxMp << endl;
 }

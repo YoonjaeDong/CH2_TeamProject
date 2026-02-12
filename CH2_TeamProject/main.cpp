@@ -4,6 +4,24 @@
 
 #include <Windows.h>
 
+void WaitForPlayerInput()
+{
+    system ( "pause");
+    cout << endl;
+}
+
+bool BattleTurn(ACharacter* Attacker, ACharacter* Defender)
+{
+    Attacker->DoAction(Defender);
+    
+    Attacker->ShowStat(Defender);
+    Defender->ShowStat(Attacker);
+   
+    WaitForPlayerInput();    
+
+    return Defender->IsDead();
+}
+
 int main()
 {
     ACharacter* Player = new APlayer("용사", FUnitStat(200, 50, 30, 10, 30));
@@ -11,33 +29,25 @@ int main()
 
     cout << "=== 데스매치 시작! === " << endl;
 
-    Sleep(1000);
+    WaitForPlayerInput();
 
-    while (!Player->IsDead() && !Monster->IsDead())
+    while (true)
     {
-        Player->Attack(Monster);
-
-        if (Monster->IsDead())
+        if (BattleTurn(Player, Monster) == true)
         {
-            cout << "몬스터가 쓰러졌습니다! 승리!" << endl;
             break;
         }
 
-        Sleep(500);
-
-        Monster->Attack(Player);
-
-        if (Player->IsDead())
+        if (BattleTurn(Monster, Player) == true)
         {
-            cout << "플레이어가 쓰러졌습니다... 패배..." << endl;
             break;
         }
-
-        Sleep(1000);
     }
 
     delete Player;
     delete Monster;
+
+    WaitForPlayerInput();
 
     return 0;
 }
