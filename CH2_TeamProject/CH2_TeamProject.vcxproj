@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleManager.cpp" />
     <ClCompile Include="Character\Character.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -352,11 +353,14 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Skill\Skill.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleManager.h" />
     <ClInclude Include="Character\Character.h" />
     <ClInclude Include="Character\Monster.h" />
     <ClInclude Include="Character\Player.h" />
+    <ClInclude Include="Skill\Skill.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

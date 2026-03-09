@@ -28,11 +28,6 @@ void FDamageResult::PrintMessage(const string& AttackMessage)
 	cout << "---------------------------------------------------" << endl;
 }
 
-void ACharacter::PrintName()
-{
-	cout << "[" << Name << "] ";
-}
-
 FDamageResult ACharacter::Attack(ACharacter* Target)
 {
 	int Damage = Stat.Atk;
@@ -91,10 +86,31 @@ void ACharacter::DoAction(ACharacter* Target)
 	
 		return;
 	}
+
 	UseSkill(Target);
 }
 
-void ACharacter::ShowStat(ACharacter* Target)
+void ACharacter::PrintName()
 {
-	cout << "[" << Name << "]" << "HP : " << Stat.Hp << " / " << Stat.MaxHp << "|" << "MP : " << Stat.Mp << " / " << Stat.MaxMp << endl;
+	cout << "[" << Name << "] ";
+}
+
+void ACharacter::ShowStat()
+{
+	cout << "[System] ";
+	PrintName();
+
+	cout << " HP: " << Stat.Hp << " / " << Stat.MaxMp << " MP: " << Stat.Mp << " / " << Stat.MaxMp << endl;
+}
+
+void ACharacter::PlayTurn(ACharacter* Target)
+{
+	if (GetRandomInt() < 50)
+	{
+		Attack(Target);
+	}
+	else
+	{
+		UseSkill(Target);
+	}
 }

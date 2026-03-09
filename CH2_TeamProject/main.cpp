@@ -1,53 +1,29 @@
 ﻿#include "Character/Character.h"
 #include "Character/Player.h"
 #include "Character/Monster.h"
+#include "BattleManager.h"
 
 #include <Windows.h>
-
-void WaitForPlayerInput()
-{
-    system ( "pause");
-    cout << endl;
-}
-
-bool BattleTurn(ACharacter* Attacker, ACharacter* Defender)
-{
-    Attacker->DoAction(Defender);
-    
-    Attacker->ShowStat(Defender);
-    Defender->ShowStat(Attacker);
-   
-    WaitForPlayerInput();    
-
-    return Defender->IsDead();
-}
+#include <iostream>
+#include <memory>
 
 int main()
 {
-    ACharacter* Player = new APlayer("용사", FUnitStat(200, 50, 30, 10, 30));
-    ACharacter* Monster = new AMonster("트롤", FUnitStat(100, 30, 20, 5, 10));
+    auto BattleManager = std::make_unique<ABattleManager>();
+
+    FUnitStat PlayerStat(200, 50, 30, 10, 30);
+    FUnitStat MonsterStat(100, 30, 20, 5, 10);
+
+    unique_ptr<ACharacter> Player = make_unique<APlayer>("용사", PlayerStat);
+    unique_ptr<ACharacter> Monster = make_unique<AMonster>("트롤", MonsterStat);
 
     cout << "=== 데스매치 시작! === " << endl;
 
-    WaitForPlayerInput();
+    BattleManager->WaitForPlayerInput();
+    BattleManager->RunBattle(Player.get(), Monster.get());
+    BattleManager->WaitForPlayerInput();
 
-    while (true)
-    {
-        if (BattleTurn(Player, Monster) == true)
-        {
-            break;
-        }
-
-        if (BattleTurn(Monster, Player) == true)
-        {
-            break;
-        }
-    }
-
-    delete Player;
-    delete Monster;
-
-    WaitForPlayerInput();
+    cout << "=== 데스매치 종료! === " << endl;
 
     return 0;
 }

@@ -65,7 +65,8 @@ public:
 	virtual void UseSkill(ACharacter* Target) = 0;
 	void PrintName();
 	int GetMaxHp() const { return Stat.MaxHp; }
+	void PlayTurn(ACharacter* Target);
 
 	void DoAction(ACharacter* Target);
-	void ShowStat(ACharacter* Target);
+	void ShowStat();
 };
